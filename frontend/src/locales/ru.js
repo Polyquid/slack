@@ -4,6 +4,7 @@ const ru = {
       title: 'Hexlet chat',
       signedAs: 'Вошли как: ',
       exit: 'Выйти',
+      lang: 'Сменить язык',
     },
     errorPage: {
       title: 'Упс!',

@@ -15,11 +15,12 @@ import SocketContext from '../../contexts';
 const Channels = () => {
   const { data } = useGetChannelsQuery();
   const dispatch = useDispatch();
-  const currentChannelName = useSelector(({
-    ui,
-  }) => ui.currentChannel.name ?? ui.defaultChannel.name);
-  const { name: modalName, show: modalShow } = useSelector((state) => state.ui.currentModal);
-  const { currentChannel, clickedChannel, defaultChannel } = useSelector((state) => state.ui);
+  const currentChannelName = useSelector(
+    ({ ui }) => ui.currentChannel.name ?? ui.defaultChannel.name,
+  );
+  const { currentChannel, clickedChannel, defaultChannel } = useSelector(
+    (state) => state.ui,
+  );
   const socket = useContext(SocketContext);
 
   const channelsNames = data?.map(({ name }) => name);
@@ -93,12 +94,7 @@ const Channels = () => {
         onRenameChannel={handleRenameChannel}
         onSetCurrentChannel={handleSetCurrentChannel}
       />
-      <ChatModal
-        name={modalName}
-        show={modalShow}
-        onHide={handleModalHide}
-        validationData={channelsNames}
-      />
+      <ChatModal onHide={handleModalHide} validationData={channelsNames} />
     </div>
   );
 };

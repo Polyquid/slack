@@ -65,7 +65,7 @@ const LoginForm = () => {
           onChange={formik.handleChange}
           className={classNames('form-control', { 'is-invalid': !!formik.errors.username || !!formik.errors.unathorized })}
         />
-        <label htmlFor="username">Ваш ник</label>
+        <label htmlFor="username">{ t('login.form.username') }</label>
         {formik.errors.username && <div className="invalid-feedback">{formik.errors.username}</div>}
       </div>
       <div className="form-floating mb-4">
@@ -80,12 +80,12 @@ const LoginForm = () => {
           onChange={formik.handleChange}
           className={classNames('form-control', { 'is-invalid': !!formik.errors.password || !!formik.errors.unathorized })}
         />
-        <label htmlFor="password">Пароль</label>
+        <label htmlFor="password">{ t('login.form.password') }</label>
         {formik.errors.password && <div className="invalid-feedback">{formik.errors.password}</div>}
         {formik.errors.unathorized && <div className="invalid-tooltip" style={{ display: 'block' }}>{t('login.form.errors.invalidRequest')}</div>}
       </div>
       <Button type="submit" className="w-100 mb-3" variant="outline-primary" disabled={formik.isSubmitting}>
-        Войти
+        { t('login.form.submit') }
       </Button>
     </form>
   );

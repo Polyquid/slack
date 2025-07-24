@@ -10,7 +10,7 @@ import { resetAuthData } from '../store/slices/authDataSlice';
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const currentUserName = useSelector(({ authData }) => authData.username);
   const handleClick = () => {
@@ -18,12 +18,16 @@ const Header = () => {
     dispatch(resetAuthData());
     navigate('/login', { replace: false });
   };
+  const handleChangeLang = () => {
+    i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en');
+  };
 
   return (
     <Navbar className="shadow-sm navbar bg-white">
       <Container>
         <Navbar.Brand href="/">{t('header.title')}</Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
+          <Button variant="outline-secondary" className="mx-1" onClick={handleChangeLang}>{t('header.lang')}</Button>
           {currentUserName
           && (
           <>
