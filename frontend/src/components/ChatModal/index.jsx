@@ -1,4 +1,5 @@
 import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
 import RenameChannelModal from './RenameChannelModal';
 import DeleteChannelModal from './DeleteChannelModal';
 import AddChannelModal from './AddChannelModal';
@@ -9,13 +10,10 @@ const mapModal = {
   addChannel: AddChannelModal,
 };
 
-const ChatModal = ({
-  name,
-  show,
-  onHide,
-  validationData,
-}) => {
+const ChatModal = ({ onHide, validationData }) => {
+  const { name, show } = useSelector((state) => state.ui.currentModal);
   const ModalBody = mapModal[name] ?? (() => null);
+
   return (
     <Modal
       show={show}

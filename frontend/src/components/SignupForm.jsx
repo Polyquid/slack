@@ -75,13 +75,13 @@ const SignupForm = () => {
           name="username"
           autoComplete="username"
           required=""
-          placeholder="Имя пользователя"
+          placeholder={t('signup.form.username')}
           id="username"
           value={formik.values.username}
           onChange={formik.handleChange}
           className={classNames('form-control', { 'is-invalid': !!formik.errors.username || !!formik.errors.isNotUniq })}
         />
-        <label htmlFor="username">Имя пользователя</label>
+        <label htmlFor="username">{t('signup.form.username')}</label>
         {formik.errors.username && <div className="invalid-feedback">{formik.errors.username}</div>}
       </div>
 
@@ -90,14 +90,14 @@ const SignupForm = () => {
           name="password"
           autoComplete="password"
           required=""
-          placeholder="Пароль"
+          placeholder={t('signup.form.password')}
           type="password"
           id="password"
           value={formik.values.password}
           onChange={formik.handleChange}
           className={classNames('form-control', { 'is-invalid': !!formik.errors.password || !!formik.errors.isNotUniq })}
         />
-        <label htmlFor="password">Пароль</label>
+        <label htmlFor="password">{t('signup.form.password')}</label>
         {formik.errors.password && <div className="invalid-feedback">{formik.errors.password}</div>}
       </div>
 
@@ -106,19 +106,19 @@ const SignupForm = () => {
           name="confirmPassword"
           autoComplete="confirmPassword"
           required=""
-          placeholder="Подтвердите пароль"
+          placeholder={t('signup.form.confirmPassword')}
           type="password"
           id="confirmPassword"
           value={formik.values.confirmPassword}
           onChange={formik.handleChange}
           className={classNames('form-control', { 'is-invalid': !!formik.errors.confirmPassword || !!formik.errors.isNotUniq })}
         />
-        <label htmlFor="confirmPassword">Подтвердите пароль</label>
+        <label htmlFor="confirmPassword">{t('signup.form.confirmPassword')}</label>
         {formik.errors.confirmPassword && <div className="invalid-feedback">{formik.errors.confirmPassword}</div>}
         {formik.errors.isNotUniq && <div className="invalid-tooltip" style={{ display: 'block' }}>{t('signup.form.errors.invalidRequest')}</div>}
       </div>
       <Button type="submit" className="w-100 mb-3" variant="outline-primary" disabled={formik.isSubmitting}>
-        Войти
+        {t('signup.form.submit')}
       </Button>
     </form>
   );

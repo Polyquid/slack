@@ -14,7 +14,9 @@ const ChannelsBody = ({
   const renderButton = (name, id) => (
     <button
       type="button"
-      className={`w-100 text-start rounded-0 btn ${currentChannelName === name ? 'btn-secondary' : ''}`}
+      className={`w-100 text-start rounded-0 btn ${
+        currentChannelName === name ? 'btn-secondary' : ''
+      }`}
       onClick={onSetCurrentChannel(name, id)}
     >
       <span className="me-1">{t('chat.channels.marker')}</span>
@@ -38,21 +40,38 @@ const ChannelsBody = ({
         {name}
       </Button>
 
-      <Dropdown.Toggle split variant={currentChannelName === name ? 'secondary' : 'none'}>
+      <Dropdown.Toggle
+        split
+        variant={currentChannelName === name ? 'secondary' : 'none'}
+      >
         <span className="visually-hidden">{t('chat.channels.editButton')}</span>
       </Dropdown.Toggle>
 
       <Dropdown.Menu className="w-100">
-        <Dropdown.Item onClick={onDeleteChannel}>{t('chat.channels.removeButton')}</Dropdown.Item>
-        <Dropdown.Item onClick={onRenameChannel}>{t('chat.channels.renameButton')}</Dropdown.Item>
+        <Dropdown.Item onClick={onDeleteChannel}>
+          {t('chat.channels.removeButton')}
+        </Dropdown.Item>
+        <Dropdown.Item onClick={onRenameChannel}>
+          {t('chat.channels.renameButton')}
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 
   return (
-    <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
+    <ul
+      id="channels-box"
+      className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block"
+    >
       {data?.map(({ id, name, removable }) => (
-        <li key={id} id={`${id}`} name={`${name}`} className="nav-item w-100" onClick={onClickChannel} role="presentation">
+        <li
+          key={id}
+          id={`${id}`}
+          name={`${name}`}
+          className="nav-item w-100"
+          onClick={onClickChannel}
+          role="presentation"
+        >
           {removable ? renderDropdown(name, id) : renderButton(name, id)}
         </li>
       ))}
